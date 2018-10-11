@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../../components/Jumbotron";
+import DeleteBtn from "../../components/DeleteBtn";
+import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Col, Row, Container } from "../../components/Grid";
+import { List, ListItem } from "../../components/List";
+import { Input, TextArea, FormBtn, Dropdown } from "../../components/Form";
 
 class Footprints extends Component {
     state = {
@@ -35,29 +35,33 @@ class Footprints extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.model) {
-            API.saveSearch({
-                model: this.state.model
-            })
-            .then(res => this.loadSearched())
-            .catch(err => console.log(err))
-        };
 
-        axios.post("/api/calculate", { model: this.state.model })
-        .then(() => console.log("success"))
-        .catch(err => console.log(err))
+        if (this.state.model) {
+            // API.saveSearch({
+            //     model: this.state.model
+            // })
+            // .then(res => this.loadSearched())
+            // .catch(err => console.log(err))
+
+            // no api call here...
+            // axios.post("/api/calculate", { model: this.state.model })
+            // .then(() => console.log("success"))
+            // .catch(err => console.log(err))
+        };
     };
 
     render() {
         return (
             <form>
-                <Input 
+                <Dropdown 
+                    onClick={this.handleFormSubmit} 
                     value={this.state.model} 
-                    onChange={this.handleInputChange} 
+                    // onChange={this.handleInputChange} 
                     name="model" 
-                    placeholder="Model (Required)" 
+                    // placeholder="Model (Required)" 
                 />
-                <button onClick={this.handleFormSubmit}>Submit</button>
+
+                {/* <button onClick={this.handleFormSubmit}>Submit</button> */}
             </form>
             
 

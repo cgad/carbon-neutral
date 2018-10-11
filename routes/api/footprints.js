@@ -1,3 +1,6 @@
+// no api call is necessary here...
+// so only make individual flight/pet/roadtrip api js files instead of this?
+
 const axios = require("axios");
 const router = require("express").Router();
 const footprintsController = require("../../controllers/footprintsController");
