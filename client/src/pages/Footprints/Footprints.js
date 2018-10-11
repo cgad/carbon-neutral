@@ -26,42 +26,14 @@ class Footprints extends Component {
         .catch(err => console.log(err));
     };
 
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        if (this.state.model) {
-            // API.saveSearch({
-            //     model: this.state.model
-            // })
-            // .then(res => this.loadSearched())
-            // .catch(err => console.log(err))
-
-            // no api call here...
-            // axios.post("/api/calculate", { model: this.state.model })
-            // .then(() => console.log("success"))
-            // .catch(err => console.log(err))
-        };
-    };
-
     render() {
         return (
             <section class="section parallax bg1">
             <form>
-                <Dropdown 
-                    onClick={this.handleFormSubmit} 
+                <Dropdown  
                     value={this.state.model} 
                     name="model" 
-                    // placeholder="Model (Required)" 
                 />
-
-                {/* <button onClick={this.handleFormSubmit}>Submit</button> */}
             </form>
             </section>
         );

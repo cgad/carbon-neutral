@@ -3,17 +3,7 @@ import axios from "axios";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 
-// const PropTypes = {
-//     size: React.PropTypes.number,
-//     position: React.PropTypes.string.isRequired
-// };
-
 class Flight extends Component {
-    
-    // static contextTypes = {
-    //     parallaxController: PropTypes.object.isRequired,
-    // };
-
     state = {
         origin: "",
         destination: "",
