@@ -3,10 +3,21 @@ import axios from "axios";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 
+// const PropTypes = {
+//     size: React.PropTypes.number,
+//     position: React.PropTypes.string.isRequired
+// };
+
 class Flight extends Component {
+    
+    // static contextTypes = {
+    //     parallaxController: PropTypes.object.isRequired,
+    // };
+
     state = {
         origin: "",
         destination: "",
+        airline: ""
     }
 
     componentDidMount() {
@@ -26,7 +37,8 @@ class Flight extends Component {
         if (this.state.origin && this.state.destination) {
             axios.post("/api/flight/calculate", {
                 origin: this.state.origin,
-                destination: this.state.destination
+                destination: this.state.destination, // this stuff is req.body so req.body.origin etc
+                airline: this.state.airline
             })
             .then(() => console.log("success"))
             .catch(err => console.log(err))
@@ -35,18 +47,25 @@ class Flight extends Component {
 
     render() {
         return (
+            <section class="section parallax bg2">
             <form>
                 <Input 
                     onChange={this.handleInputChange} 
                     value={this.state.origin} 
                     name="origin" 
-                    placeholder="Origin Airport (ex. DEN)" 
+                    placeholder="Origin Airport (ex. DEN). Required" 
                 />
                 <Input 
                     onChange={this.handleInputChange} 
                     value={this.state.destination} 
                     name="destination" 
-                    placeholder="Destination Airport (ex. FLL)" 
+                    placeholder="Destination Airport (ex. FLL). Required" 
+                />
+                <Input 
+                    onChange={this.handleInputChange} 
+                    value={this.state.airline} 
+                    name="airline" 
+                    placeholder="Airline (ex. Delta). Optional" 
                 />
                 <FormBtn
                     disabled={!(this.state.origin && this.state.destination)}
@@ -55,6 +74,7 @@ class Flight extends Component {
                     Get Impact Model
                 </FormBtn>
             </form>
+            </section>
         )
     }
 }

@@ -52,19 +52,18 @@ class Footprints extends Component {
 
     render() {
         return (
+            <section class="section parallax bg1">
             <form>
                 <Dropdown 
                     onClick={this.handleFormSubmit} 
                     value={this.state.model} 
-                    // onChange={this.handleInputChange} 
                     name="model" 
                     // placeholder="Model (Required)" 
                 />
 
                 {/* <button onClick={this.handleFormSubmit}>Submit</button> */}
             </form>
-            
-
+            </section>
         );
     }
 }

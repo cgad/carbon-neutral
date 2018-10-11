@@ -1,18 +1,28 @@
 const axios = require("axios");
 const router = require("express").Router();
 
-// for flight only, to start
-// "/calulate" instead?
 // post bc receives data
-router.post("/flight/calculate", (req, res) => {
+router.post("/calculate", (req, res) => {
+  console.log(req);
   console.log("route triggered");
-  
-  const apiKey = "a2d3c6da-4b3a-477c-b8ac-9594c10395b4";
-  let model = "flights.json";
-  let origin = "FLL"; // user input... how can i get state here?
-  let destination = "DEN"; // ditto
 
-  axios.get("http://impact.brighterplanet.com/" + model + "?key=" + apiKey + "&origin_airport=" + origin + "&destination_airport=" + destination)
+  const keyString = "?key=a2d3c6da-4b3a-477c-b8ac-9594c10395b4";
+
+  let model = "flights.json";
+  let origin = "&origin_airport=" + req.body.origin;
+  let destination = "&destination_airport=" + req.body.destination;
+  let airline;
+
+  // the API supports certain airlines and not others
+  if (req.body.airline == "other") {
+    airline = "";
+  } else {
+    airline = "&airline=" + req.body.airline;
+  };
+
+  console.log("http://impact.brighterplanet.com/" + model + keyString + origin + destination + airline);
+
+  axios.get("http://impact.brighterplanet.com/" + model + keyString + origin + destination + airline)
   .then(response => { console.log(response)})
   .catch(error => { console.log(error)});
 
