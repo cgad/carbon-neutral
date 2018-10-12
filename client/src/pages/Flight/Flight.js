@@ -100,6 +100,7 @@ class Flight extends Component {
                     {/* <a href="#jump">Jump to Results</a> */}
                 </section>
 
+                {/* ADD fields for rest of flight model */}
                 <section className="section static">
                     {/* <a id="jump">Jump link destination</a> */}
                     {this.state.results.origin ? ( 
