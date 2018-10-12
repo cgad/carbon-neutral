@@ -28,14 +28,12 @@ class Footprints extends Component {
 
     render() {
         return (
-            <section class="section parallax bg1">
             <form>
                 <Dropdown  
                     value={this.state.model} 
                     name="model" 
                 />
             </form>
-            </section>
         );
     }
 }

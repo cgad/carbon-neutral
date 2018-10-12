@@ -11,6 +11,7 @@ class Pet extends Component {
     }
 
     componentDidMount() {
+        // write loadSearched function to grab all previously searched from db and display on mount
         "pet"
     }
 

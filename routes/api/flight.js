@@ -23,8 +23,8 @@ router.post("/calculate", (req, res) => {
   console.log("http://impact.brighterplanet.com/" + model + keyString + origin + destination + airline);
 
   axios.get("http://impact.brighterplanet.com/" + model + keyString + origin + destination + airline)
-  .then(response => { console.log(response)})
-  .catch(error => { console.log(error)});
+  .then(res => {console.log('OVER HERE ', res.data)})
+  .catch(error => {console.log(error)});
 
   res.end();
 });

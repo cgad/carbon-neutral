@@ -10,6 +10,7 @@ class Roadtrip extends Component {
     }
 
     componentDidMount() {
+        // write loadSearched function to grab all previously searched from db and display on mount
         "roadtrip"
     }
 
