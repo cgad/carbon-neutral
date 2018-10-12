@@ -18,24 +18,30 @@ class Footprints extends Component {
 
     };
 
-    loadSearched = () => {
-        API.getSearched()
-        .then(res =>
-            this.setState({ searched: res.data, model: "" })
-        )
-        .catch(err => console.log(err));
-    };
-
     render() {
         return (
-            <form>
-                <Dropdown  
-                    value={this.state.model} 
-                    name="model" 
-                />
-            </form>
+            <main className="wrapper">
+                <section className="section parallax bg1">
+                    {/* <a id="jump">Jump link destination</a> */}
+                    <h1>about</h1>
+                </section>
+
+                <section className="section static">
+                    <h1>methodologies for each model</h1>
+                </section>
+
+                <section className="section parallax bg1">
+                    <form>
+                        <Dropdown  
+                            value={this.state.model} 
+                            name="model" 
+                        />
+                    </form>
+                    {/* <a href="#jump">Jump to Results</a> */}
+                </section>
+            </main>
         );
-    }
-}
+    };
+};
 
 export default Footprints;

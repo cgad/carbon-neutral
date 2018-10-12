@@ -1,18 +1,14 @@
 import axios from "axios";
 
 export default {
-    // getSearched: function() {
-    //     return axios.get("/api/searched");
-    // },
-    // saveSearch: function(searchTerms) {
-    //     return axios.post("/api/searched", searchTerms);
-    // }
+    // save to Flight collection
     saveSearch: function(searchTerms) {
         return axios.post("api/flight/calculate", searchTerms);
     },
-    getResults: function() {
+    getLatest: function() {
         return axios.get("/api/flight/calculate");
     },
+    // save to Flight collection
     saveResults: function(results) {
         return axios.post("/api/flight/calculate", results);
     }

@@ -1,3 +1,6 @@
 module.exports = {
-    Footprint: require("./footprint")
-  };
+    Footprint: require("./footprintModel"),
+    Flight: require("./flightModel"),
+    Roadtrip: require("./roadtripModel"),
+    Pet: require("./petModel")
+};

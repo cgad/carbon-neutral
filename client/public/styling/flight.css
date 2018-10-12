@@ -14,7 +14,7 @@
     /* Needed for children to be absolutely positioned relative to the parent. */
     position: relative;
     /* The height of the container. Must be set, but it doesn't really matter what the value is. */
-    height: 75vh;
+    height: 70vh;
   
     /* For text formatting. */
     display: flex;
@@ -45,14 +45,26 @@
   
   /* The styling for the static div. */
   .static {
-    background: white;
+    background: #191b1a;
   }
   
   /* Sets the actual background images to adorable kitties. This part is crucial. */
   .bg1::after {
-    background-image: url('https://placekitten.com/g/900/700');
+    background-image: url("../images/runway.jpg");
   }
   
   .bg2::after {
-    background-image: url('https://placekitten.com/g/800/600');
+    background-image: url("../images/runway.jpg");
   }
+
+  .btn-success, .btn-success:disabled {
+  background-color: #d1d6d1;
+  border-color: #d1d6d1;
+  color: #191b1a;
+}
+
+.btn-success.disabled, .btn-success:hover {
+  background-color: #191b1a;
+  border-color: #191b1a;
+  color: #d1d6d1;
+}
