@@ -66,4 +66,7 @@ router.post("/calculate", (req, res) => {
 router.route("/calculate")
   .get(flightController.findLatest);
 
+router.route("/all")
+  .get(flightController.findAll);
+
 module.exports = router;

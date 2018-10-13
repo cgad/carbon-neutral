@@ -8,6 +8,9 @@ export default {
     getLatest: function() {
         return axios.get("/api/flight/calculate");
     },
+    getAll: function() {
+        return axios.get("/api/flight/calculate")
+    },
     // save to Flight collection
     saveResults: function(results) {
         return axios.post("/api/flight/calculate", results);

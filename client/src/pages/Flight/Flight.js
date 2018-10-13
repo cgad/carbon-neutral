@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 import axios from "axios";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
@@ -11,34 +11,30 @@ class Flight extends Component {
         origin: "",
         destination: "",
         airline: "",
-        results: []
+        results: [],
+        searched: []
     }
 
     componentDidMount() {
-        // write loadSearched function to grab all previously searched from db and display on mount
-        "flight"
-    }
-
-    // ???????????????????????????????
-    loadLatest = () => {
-        // write a get route to the /api/flight/calculate route to the backend routing file, where i'll query the flight collection and return the latest object added from the .post route
-        API.getLatest() 
-        .then(res => 
-            {
-                console.log("latest document", res.data);
-                this.setState({ results: res.data[0], origin: "", destination: "", airline: "" }) }) 
-        .catch(err => console.log(err))
+        this.loadAll();
     };
 
-    // load all searches including latest, also call in handleformsubmit so they all appear in the "prior searches" section
-    loadResults = (res) => {
-        API.searchAPI(this.state.origin, this.state.destination)
-        .then((res)=> {
-            let resultsArray = [res.data.equivalents.cars_off_the_road_for_a_year];
-            this.setState({ results: resultsArray });
-            // .map through this.state.results down there where i want it on the page
-        });
-    }
+    loadLatest = () => {
+        // write a get route to the /api/flight/calculate route to the backend routing file, where i'll query the flight collection and return the latest object added from the .post route
+        API.getLatest()
+            .then(res => {
+                // put back origin dest airline clear
+                this.setState({ results: res.data[0] })
+            })
+            .catch(err => console.log(err))
+    };
+
+    // BUG! STATE.SEARCHED IS ONLY HOLDING ONE SEARCH
+    loadAll = () => {
+        API.getAll()
+          .then(res => this.setState({ searched: res.data }))
+          .catch(err => console.log(err));
+    };
 
     handleInputChange = event => {
         let { name, value } = event.target;
@@ -58,9 +54,17 @@ class Flight extends Component {
                 destination: this.state.destination, // req.body
                 airline: this.state.airline
             })
-            // to pull latest results
-            .then(res => this.loadLatest())
-            .catch(err => console.log(err))
+                .then(res => this.loadLatest())
+                .catch(err => console.log(err));
+
+            axios.get("/api/flight/all", {
+                origin: this.state.origin,
+                destination: this.state.destination,
+                airline: this.state.airline
+            })
+                .then(res => this.loadAll())
+                .then(res => this.setState({ origin: "", destination: "", airline: "" }))
+                .catch(err => console.log(err));
         }
     };
 
@@ -68,29 +72,29 @@ class Flight extends Component {
         return (
             <main className="wrapper">
                 <section className="section parallax bg1">
-                    <form>
+                    <form id="flightForm">
                         <label>Origin Airport (required)</label>
-                        <Input 
-                            onChange={this.handleInputChange} 
-                            value={this.state.origin} 
-                            name="origin" 
-                            placeholder="ex. DEN" 
+                        <Input
+                            onChange={this.handleInputChange}
+                            value={this.state.origin}
+                            name="origin"
+                            placeholder="ex. DEN"
                         />
                         <label>Destination Airport (required)</label>
-                        <Input 
-                            onChange={this.handleInputChange} 
-                            value={this.state.destination} 
-                            name="destination" 
-                            placeholder="ex. FLL" 
+                        <Input
+                            onChange={this.handleInputChange}
+                            value={this.state.destination}
+                            name="destination"
+                            placeholder="ex. FLL"
                         />
                         <label>Airline (optional)</label>
-                        <Input 
-                            onChange={this.handleInputChange} 
-                            value={this.state.airline} 
-                            name="airline" 
-                            placeholder="ex. Delta" 
+                        <Input
+                            onChange={this.handleInputChange}
+                            value={this.state.airline}
+                            name="airline"
+                            placeholder="ex. Delta"
                         />
-                        <FormBtn
+                        <FormBtn id="flightBtn"
                             disabled={!(this.state.origin.length === 3 && this.state.destination.length === 3)}
                             onClick={this.handleFormSubmit}
                         >
@@ -103,40 +107,75 @@ class Flight extends Component {
                 {/* ADD fields for rest of flight model */}
                 <section className="section static">
                     {/* <a id="jump">Jump link destination</a> */}
-                    {this.state.results.origin ? ( 
+                    {this.state.results.origin ? (
                         <Container fluid>
                             <Row>
-                                <Col size="md-4">
-                                    <List key={this.state.results._id}>
-                                        <ListItem>
-                                            <strong>Origin: </strong>{this.state.results.origin}
-                                        </ListItem>
-                                        <ListItem>
-                                            <strong>Destination: </strong>{this.state.results.destination}
-                                        </ListItem>
-                                        <ListItem>
-                                            <strong>Airline: </strong>{this.state.results.airline}
-                                        </ListItem>
-                                    </List>
+                                <Col size="12">
+                                    <h6>Origin: <strong>{this.state.results.origin}</strong> | Destination: <strong>{this.state.results.destination}</strong> | Airline: <strong>{this.state.results.airline}</strong></h6>
                                 </Col>
+                            </Row>
+                            <Row>
                                 <Col size="md-8 sm-12">
+                                    <h5>Your contribution to the total greenhouse gas emission of your searched flight is equivalent to...</h5>
                                     <List key={this.state.results._id}>
+                                        {/* <ListItem>
+                                            <strong>cars off the road for a year: </strong>{this.state.results.cars_off_road_for_year.$numberDecimal}
+                                        </ListItem> */}
                                         <ListItem>
-                                            <strong>Carbon: </strong>{this.state.results.carbon}
+                                            <strong>{this.state.results.cars_off_road_for_day.$numberDecimal} </strong>cars off the road for a day
+                                        </ListItem>
+                                        <ListItem>
+                                            <strong>{this.state.results.days_vegan.$numberDecimal} </strong>days of veganism
+                                        </ListItem>
+                                        <ListItem>
+                                            <strong>{this.state.results.canisters_bbq_propane.$numberDecimal} </strong>canisters of BBQ propane
+                                        </ListItem>
+                                        <ListItem>
+                                            <strong>{this.state.results.recycled_bags_trash.$numberDecimal} </strong>recycled bags of trash
                                         </ListItem>
                                     </List>
                                 </Col>
                             </Row>
-                        </Container>     
+                        </Container>
                     ) : (
                         <h3>No Results to Display</h3>
                     )}
-                    
-                
                 </section>
 
                 <section className="section parallax bg2">
-                    <h1>prior searches in bootstrap cards</h1>
+                    <Container fluid>
+                        <Row>
+                            <Col size="md-2">
+                            </Col>
+                            <Col size="md-8">
+                                <h3>The flight greenhouse gas emission is the anthropogenic greenhouse gas emissions attributed to a single passenger on this flight. It includes CO2 emissions from combustion of non-biogenic fuel and extra forcing effects of high-altitude fuel combustion.</h3>
+                            </Col>
+                            <Col size="md-2">
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+
+                <section className="section static">
+                    {this.state.searched.length ? (
+                        <Fragment>
+                            {this.state.searched.map(search => (
+                                <List key={this.state.results._id}>
+                                    <ListItem>
+                                        {search.origin}
+                                    </ListItem>
+                                    <ListItem>
+                                        {search.destination}
+                                    </ListItem>
+                                    <ListItem>
+                                        {search.airline}
+                                    </ListItem>
+                                </List>
+                            ))}
+                        </Fragment>
+                    ) : (
+                    <h3>No Previous Searches to Display</h3>
+                    )}
                 </section>
             </main>
         )

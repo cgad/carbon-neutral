@@ -44,20 +44,20 @@
   }
   
   /* The styling for the static div. */
-  .static {
-    background: #191b1a;
-  }
+.static {
+  background: #191b1a;
+}
   
   /* Sets the actual background images to adorable kitties. This part is crucial. */
-  .bg1::after {
-    background-image: url("../images/runway.jpg");
-  }
+.bg1::after {
+  background-image: url("../images/runway.jpg");
+}
   
-  .bg2::after {
-    background-image: url("../images/runway.jpg");
-  }
+.bg2::after {
+  background-image: url("../images/runway.jpg");
+}
 
-  .btn-success, .btn-success:disabled {
+.btn-success, .btn-success:disabled {
   background-color: #d1d6d1;
   border-color: #d1d6d1;
   color: #191b1a;
@@ -67,4 +67,17 @@
   background-color: #191b1a;
   border-color: #191b1a;
   color: #d1d6d1;
+}
+
+#flightForm {
+  width: 22em;
+  line-height: 90%;
+}
+
+#flightBtn {
+  width: 100%;
+}
+
+#flightScope {
+  width: 80em;
 }
