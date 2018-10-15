@@ -1,27 +1,18 @@
 import axios from "axios";
 
 export default {
-    getAllSearches: function() {
+    // add getCurrentSearch
+    getAllFlights: function() {
         return axios.get("/api/flight/calculate")
     },
+    getFlight: function(id) {
+        return axios.get("/api/books/" + id);
+    },
+    deleteFlight: function(id) {
+        return axios.delete("api/flight/calculate/" + id);
+    },
+    // to "favorite" a search
     saveFlight: function(flightData) {
-        return axios.post("/api/flight/calculate", flightData)
+        return axios.post("/api/flight/calculate/", flightData)
     }
 };
-
-// export default {
-//     // save to Flight collection
-//     saveSearch: function(searchTerms) {
-//         return axios.post("api/flight/calculate", searchTerms);
-//     },
-//     getLatest: function() {
-//         return axios.get("/api/flight/calculate");
-//     },
-//     // getAll: function() {
-//     //     return axios.get("/api/flight/calculate")
-//     // },
-//     // save to Flight collection
-//     saveResults: function(results) {
-//         return axios.post("/api/flight/calculate", results);
-//     }
-// };

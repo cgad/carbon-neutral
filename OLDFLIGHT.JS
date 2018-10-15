@@ -263,17 +263,17 @@ class Flight extends Component {
     //             </section>
 
     //             <section className="section parallax bg2">
-    //                 <Container fluid>
-    //                     <Row>
-    //                         <Col size="md-2">
-    //                         </Col>
-    //                         <Col size="md-8">
-    //                             <h3>The flight greenhouse gas emission is the anthropogenic greenhouse gas emissions attributed to a single passenger on this flight. It includes CO2 emissions from combustion of non-biogenic fuel and extra forcing effects of high-altitude fuel combustion.</h3>
-    //                         </Col>
-    //                         <Col size="md-2">
-    //                         </Col>
-    //                     </Row>
-    //                 </Container>
+                    // <Container fluid>
+                    //     <Row>
+                    //         <Col size="md-2">
+                    //         </Col>
+                    //         <Col size="md-8">
+                    //             <h3>The flight greenhouse gas emission is the anthropogenic greenhouse gas emissions attributed to a single passenger on this flight. It includes CO2 emissions from combustion of non-biogenic fuel and extra forcing effects of high-altitude fuel combustion.</h3>
+                    //         </Col>
+                    //         <Col size="md-2">
+                    //         </Col>
+                    //     </Row>
+                    // </Container>
     //             </section>
 
     //             <section className="section static">
