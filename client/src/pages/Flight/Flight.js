@@ -137,10 +137,10 @@ class Flight extends Component {
                                 {this.state.results.map(result => (
                                     <TableRow key={result._id}>
                                         <DataCell>
-                                            <DeleteBtn onClick={() => this.deleteSearch(result._id)}/>
+                                            <DeleteBtn data-toggle="tooltip" data-placement="left" title="Click to delete search record" onClick={() => this.deleteSearch(result._id)}/>
                                         </DataCell>
                                         <DataCell>
-                                            <img className="viewIcon" src="/images/eye.png" alt="Eye icon"/>
+                                            <img className="viewIcon" data-toggle="tooltip" data-placement="right" title="Click to view search results" src="/images/eye.png" alt="Eye icon"/>
                                         </DataCell>
                                         <DataCell>{result.origin}</DataCell>
                                         <DataCell>{result.destination}</DataCell>
