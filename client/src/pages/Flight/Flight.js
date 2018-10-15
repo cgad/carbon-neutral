@@ -123,6 +123,7 @@ class Flight extends Component {
                             <TableHeader>
                                 <HeaderCell></HeaderCell>
                                 <HeaderCell></HeaderCell>
+                                <HeaderCell></HeaderCell>
                                 <HeaderCell>
                                     Origin
                                 </HeaderCell>
@@ -140,7 +141,10 @@ class Flight extends Component {
                                             <DeleteBtn data-toggle="tooltip" data-placement="left" title="Click to delete search record" onClick={() => this.deleteSearch(result._id)}/>
                                         </DataCell>
                                         <DataCell>
-                                            <img className="viewIcon" data-toggle="tooltip" data-placement="right" title="Click to view search results" src="/images/eye.png" alt="Eye icon"/>
+                                            <img className="viewIcon" data-toggle="tooltip" data-placement="bottom" title="Click to view search results" src="/images/eye.png" alt="Eye icon"/>
+                                        </DataCell>
+                                        <DataCell>
+                                            <img className="favIcon" data-toggle="tooltip" data-placement="right" title="Click to save search in favorites" src="/images/heart.png" alt="Heart icon"/>
                                         </DataCell>
                                         <DataCell>{result.origin}</DataCell>
                                         <DataCell>{result.destination}</DataCell>
