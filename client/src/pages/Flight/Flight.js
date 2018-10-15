@@ -14,16 +14,18 @@ class Flight extends Component {
         destination: "",
         airline: "",
         results: [],
-        current: []
+        current: false
     }
 
     componentDidMount() {
         // load all searches from database
         // change code so that current is cleared with page load, so write separate function to set current state?
+        
         this.loadAllSearches();
     };
 
-    // to load all searches and also grab current search results from this.state.current
+    // to load all searches
+    // also grab current search results from this.state.current
     loadAllSearches = () => {
         API.getAllFlights()
             .then(res => this.setState({ results: res.data, current: res.data[0], origin: "", destination: "", airline: "" }))
@@ -98,9 +100,35 @@ class Flight extends Component {
                  </section>
                  <section className="section static">
                     {/* <a id="jump">Jump link destination</a> */}
+                    {console.log(this.state.current)}
                     {this.state.current ? (
-                        // get latest search results
-                        <h1>hi</h1>
+                        <Container fluid>
+                            <Row>
+                                <Col size="12">
+                                    <h6>Origin: <strong>{this.state.current.origin}</strong> | Destination: <strong>{this.state.current.destination}</strong> | Airline: <strong>{this.state.current.airline}</strong></h6>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col size="md-8 sm-12">
+                                    <br></br>
+                                    <h5>Your contribution to the total greenhouse gas emission of your searched flight is equivalent to...</h5><br></br>
+                                    <List key={this.state.current._id}>
+                                        <ListItem>
+                                            <strong>{this.state.current.cars_off_road_for_day.$numberDecimal} </strong>cars off the road for a day
+                                        </ListItem>
+                                        <ListItem>
+                                            <strong>{this.state.current.days_vegan.$numberDecimal} </strong>days of veganism
+                                        </ListItem>
+                                        <ListItem>
+                                            <strong>{this.state.current.canisters_bbq_propane.$numberDecimal} </strong>canisters of BBQ propane
+                                        </ListItem>
+                                        <ListItem>
+                                            <strong>{this.state.current.recycled_bags_trash.$numberDecimal} </strong>recycled bags of trash
+                                        </ListItem>
+                                    </List>
+                                </Col>
+                            </Row>
+                        </Container>
                     ) : (<h3>No Results to Display</h3>)}
                     
                 </section>
