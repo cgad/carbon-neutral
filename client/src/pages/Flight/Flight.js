@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 import { List, ListItem } from "../../components/List";
@@ -35,6 +35,15 @@ class Flight extends Component {
     deleteSearch = id => {
         API.deleteFlight(id)
             .then(res => this.loadAllSearches())
+            .catch(err => console.log(err));
+    };
+
+    viewSearch = id => {
+        API.viewFlight(id)
+            .then(async res => {
+                await this.setState({ current: res.data });
+                this.loadAllSearches();
+            })
             .catch(err => console.log(err));
     };
 
@@ -98,22 +107,27 @@ class Flight extends Component {
                      </form>
                      {/* <a href="#jump">Jump to Results</a> */}
                  </section>
-                 <section className="section static">
+                 <section className="section static results">
                     {/* <a id="jump">Jump link destination</a> */}
-                    {console.log(this.state.current)}
                     {this.state.current ? (
                         <Container fluid>
                             <Row>
-                                <Col size="12">
-                                    <h6>Origin: <strong>{this.state.current.origin}</strong> | Destination: <strong>{this.state.current.destination}</strong> | Airline: <strong>{this.state.current.airline}</strong></h6>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <h6 className="results">Origin: <strong>{this.state.current.origin}</strong> | Destination: <strong>{this.state.current.destination}</strong> | Airline: <strong>{this.state.current.airline}</strong></h6>
+                                </Col>
+                                <Col size="md-2">
                                 </Col>
                             </Row>
                             <Row>
-                                <Col size="md-8 sm-12">
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
                                     <br></br>
-                                    <h5>Your contribution to the total greenhouse gas emission of your searched flight is equivalent to...</h5><br></br>
-                                    <List key={this.state.current._id}>
-                                        <ListItem>
+                                    <h4 className="results">Your contribution to the total greenhouse gas emission of your searched flight is equivalent to...</h4><br></br>
+                                    <List key={this.state.current._id} className="results">
+                                        <ListItem className="resultItem">
                                             <strong>{this.state.current.cars_off_road_for_day.$numberDecimal} </strong>cars off the road for a day
                                         </ListItem>
                                         <ListItem>
@@ -126,6 +140,8 @@ class Flight extends Component {
                                             <strong>{this.state.current.recycled_bags_trash.$numberDecimal} </strong>recycled bags of trash
                                         </ListItem>
                                     </List>
+                                </Col>
+                                <Col size="md-2">
                                 </Col>
                             </Row>
                         </Container>
@@ -145,42 +161,46 @@ class Flight extends Component {
                         </Row>
                     </Container> 
                 </section>
-                <section className="section static">
+                <section className="section static results">
                     {this.state.results.length ? ( 
-                        <Table>
-                            <TableHeader>
-                                <HeaderCell></HeaderCell>
-                                <HeaderCell></HeaderCell>
-                                <HeaderCell></HeaderCell>
-                                <HeaderCell>
-                                    Origin
-                                </HeaderCell>
-                                <HeaderCell>
-                                    Destination
-                                </HeaderCell>
-                                <HeaderCell>
-                                    Airline
-                                </HeaderCell>
-                            </TableHeader>
-                            <TableBody>
-                                {this.state.results.map(result => (
-                                    <TableRow key={result._id}>
-                                        <DataCell>
-                                            <DeleteBtn data-toggle="tooltip" data-placement="left" title="Click to delete search record" onClick={() => this.deleteSearch(result._id)}/>
-                                        </DataCell>
-                                        <DataCell>
-                                            <img className="viewIcon" data-toggle="tooltip" data-placement="bottom" title="Click to view search results" src="/images/eye.png" alt="Eye icon"/>
-                                        </DataCell>
-                                        <DataCell>
-                                            <img className="favIcon" data-toggle="tooltip" data-placement="right" title="Click to save search in favorites" src="/images/heart.png" alt="Heart icon"/>
-                                        </DataCell>
-                                        <DataCell>{result.origin}</DataCell>
-                                        <DataCell>{result.destination}</DataCell>
-                                        <DataCell>{result.airline}</DataCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                        <Container fluid>
+                            <Row>
+                                <Col size="md-2">
+                                </Col>
+                                <Col size="md-8">
+                                    <Table>
+                                        <TableHeader>
+                                            <HeaderCell></HeaderCell>
+                                            <HeaderCell>
+                                                Origin
+                                            </HeaderCell>
+                                            <HeaderCell>
+                                                Destination
+                                            </HeaderCell>
+                                            <HeaderCell>
+                                                Airline
+                                            </HeaderCell>
+                                        </TableHeader>
+                                        <TableBody>
+                                            {this.state.results.map(result => (
+                                                <TableRow key={result._id}>
+                                                    <DataCell>
+                                                        <DeleteBtn data-toggle="tooltip" data-placement="left" title="Click to delete search record" onClick={() => this.deleteSearch(result._id)}/>
+                                                        <img className="viewIcon" data-toggle="tooltip" data-placement="bottom" title="Click to view search results" src="/images/eye.png" alt="Eye icon" onClick={() => this.viewSearch(result._id)}/>
+                                                        <img className="favIcon" data-toggle="tooltip" data-placement="right" title="Click to save search in favorites" src="/images/heart.png" alt="Heart icon"/>
+                                                    </DataCell>
+                                                    <DataCell>{result.origin}</DataCell>
+                                                    <DataCell>{result.destination}</DataCell>
+                                                    <DataCell>{result.airline}</DataCell>
+                                                </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </Col>
+                                <Col size="md-2">
+                                </Col>
+                            </Row>
+                        </Container> 
                     ) : (
                         <h3>No Prior Searches to Display</h3>
                     )}

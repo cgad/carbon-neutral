@@ -15,4 +15,7 @@ router.route("/calculate/:id")
   .put(flightsController.updateSearch)
   .delete(flightsController.removeSearch);
 
+router.route("/view/:id")
+  .get(flightsController.findById)
+
 module.exports = router;

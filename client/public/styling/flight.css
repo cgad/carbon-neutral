@@ -78,15 +78,34 @@
   width: 100%;
 }
 
-#flightScope {
-  width: 80em;
-}
-
 .viewIcon {
   height: 16px;
+  float: right;
+  padding: 0 7px 0 11px;
+  margin-top: 8px;
 }
 
 .favIcon {
   height: 14px;
-  width: 17px;
+  width: 14px;
+  float: right;
+  margin-top: 9px;
+}
+
+.results {
+  text-align: center;
+  color: rgb(248, 248, 248);
+}
+
+.list-group-item {
+  background-color: #81adc9;
+  text-align: center;
+}
+
+thead {
+  background-color: #81adc9;
+}
+
+tbody {
+  border-bottom: 1px solid #dee2e6;
 }

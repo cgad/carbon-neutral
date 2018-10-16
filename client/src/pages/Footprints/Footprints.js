@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn, Dropdown } from "../../components/Form";
+import { Dropdown } from "../../components/Form";
 
 class Footprints extends Component {
     state = {
@@ -14,20 +8,46 @@ class Footprints extends Component {
         model: ""
     };
 
-    componentDidMount() {
-
-    };
-
     render() {
         return (
             <main className="wrapper">
                 <section className="section parallax bg1">
                     {/* <a id="jump">Jump link destination</a> */}
-                    <h1>about</h1>
+                    <Container fluid id="intro">
+                        <Row>
+                            <Col size="md-12">
+                                <p id="title">Carbon Neutral</p>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col size="md-12">
+                                <h1 id="subtitle">Offset Your Emissions</h1>
+                            </Col>
+                        </Row>
+                    </Container>
                 </section>
 
                 <section className="section static">
-                    <h1>methodologies for each model</h1>
+                    <Container fluid>
+                        <Row>
+                            <Col size="md-2">
+                            </Col>
+                            <Col size="md-8">
+                                <h2 id="about">Carbon Neutral offers greenhouse gas modeling by calculating individual contribution of emissions through a variety of daily activities including travel, meals, pet ownership and electricity use.</h2>
+                            </Col>
+                            <Col size="md-2">
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col size="md-2">
+                            </Col>
+                            <Col size="md-8">
+                                <h4 id="aboutSub">Choose your impact model below and see your personal contribution to climate change in terms of equivalents that are easy to wrap your head around.</h4>
+                            </Col>
+                            <Col size="md-2">
+                            </Col>
+                        </Row>
+                    </Container> 
                 </section>
 
                 <section className="section parallax bg1">

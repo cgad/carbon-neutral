@@ -6,7 +6,7 @@ export default {
         return axios.get("/api/flight/calculate")
     },
     getFlight: function(id) {
-        return axios.get("/api/books/" + id);
+        return axios.get("/api/flight/calculate" + id);
     },
     deleteFlight: function(id) {
         return axios.delete("api/flight/calculate/" + id);
@@ -14,5 +14,8 @@ export default {
     // to "favorite" a search
     saveFlight: function(flightData) {
         return axios.post("/api/flight/calculate/", flightData)
+    },
+    viewFlight: function(id) {
+        return axios.get("/api/flight/view/" + id)
     }
 };
