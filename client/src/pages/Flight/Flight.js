@@ -18,9 +18,7 @@ class Flight extends Component {
     }
 
     componentDidMount() {
-        // load all searches from database
         // change code so that current is cleared with page load, so write separate function to set current state?
-        
         this.loadAllSearches();
     };
 
