@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import API from "../../utils/APIroadtrip";
 import { Input, FormBtn } from "../../components/Form";
 import { List, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
@@ -19,21 +20,32 @@ class Roadtrip extends Component {
 
     componentDidMount() {
         // change code so that current is cleared with page load, so write separate function to set current state?
-        // load all searches function
+        this.loadAllSearches();
     };
 
     // to load all searches
     // also grab current search results from this.state.current
     loadAllSearches = () => {
-        // get all roadtrip function
+        API.getAllTrips()
+            .then(res => this.setState({ results: res.data, current: res.data[0], origin: "", destination: "", year: "", make: "", model: "" }))
+            .catch(err => console.log(err));
     };
 
     deleteSearch = id => {
         // delete roadtrip function
+        API.deleteTrip(id)
+            .then(res => this.loadAllSearches())
+            .catch(err => console.log(err));
     };
 
     viewSearch = id => {
         // view roadtrip function on click of view icon
+        API.viewTrip(id)
+            .then(async res => {
+                await this.setState({ current: res.data });
+                this.loadAllSearches();
+            })
+            .catch(err => console.log(err));
     };
 
     handleInputChange = event => {
