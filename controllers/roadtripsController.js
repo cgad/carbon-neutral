@@ -18,16 +18,30 @@ module.exports = {
   createTrip: function(req, res) {
     const keyString = "?key=a2d3c6da-4b3a-477c-b8ac-9594c10395b4";
 
-    let model = "automobile_trips.json";
-    let origin = "&origin=" + req.body.origin;
-    let destination = "&destination=" + req.body.destination;
+    const model = "automobile_trips.json";
+    const origin = "&origin=" + req.body.origin;
+    const destination = "&destination=" + req.body.destination;
+    let year;
     let make;
+    let model;
 
-    // the API supports certain airlines and not others
-    if (req.body.makle == "other") {
+    // optomize this code
+    if (req.body.year == "other") {
+      year = "";
+    } else {
+      year = "&year=" + req.body.year;
+    };
+
+    if (req.body.make == "other") {
       make = "";
     } else {
       make = "&make=" + req.body.make;
+    };
+
+    if (req.body.model == "other") {
+      model = "";
+    } else {
+      model = "&model=" + req.body.model;
     };
 
     axios.get("http://impact.brighterplanet.com/" + model + keyString + origin + destination + airline)
@@ -36,7 +50,9 @@ module.exports = {
       var newTrip = {
         origin: req.body.origin,
         destination: req.body.destination,
+        year: req.body.year,
         make: req.body.make,
+        model: req.body.model,
         scope: result.data.scope,
         cars_off_road_for_year: result.data.equivalents.cars_off_the_road_for_a_year,
         cars_off_road_for_day: result.data.equivalents.cars_off_the_road_for_a_day,
@@ -51,9 +67,9 @@ module.exports = {
         lightbulbs_for_day: result.data.equivalents.lightbulbs_for_a_day,
         recycled_bags_trash: result.data.equivalents.recycled_bags_of_trash
       }
-      db.Roadtrip.create(newFlight)
-        .then(newFlight => {
-          console.log(newFlight);
+      db.Roadtrip.create(newTrip)
+        .then(newTrip => {
+          console.log(newTrip);
           res.end();
         })
         .catch(err => {console.log(err)});

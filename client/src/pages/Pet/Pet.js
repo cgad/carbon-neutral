@@ -68,7 +68,7 @@ class Pet extends Component {
                     disabled={!(this.state.species && this.state.breed)}
                     onClick={this.handleFormSubmit}
                 >
-                    Get Impact Model
+                    Coming Soon!
                 </FormBtn>
             </form>
         )

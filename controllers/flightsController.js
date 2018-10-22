@@ -18,9 +18,9 @@ module.exports = {
   createFlight: function(req, res) {
     const keyString = "?key=a2d3c6da-4b3a-477c-b8ac-9594c10395b4";
 
-    let model = "flights.json";
-    let origin = "&origin_airport=" + req.body.origin;
-    let destination = "&destination_airport=" + req.body.destination;
+    const model = "flights.json";
+    const origin = "&origin_airport=" + req.body.origin;
+    const destination = "&destination_airport=" + req.body.destination;
     let airline;
 
     // the API supports certain airlines and not others
