@@ -88,13 +88,23 @@ class Flight extends Component {
                             name="destination" 
                             placeholder="ex. FLL" 
                         />
-                        <label>Airline (optional)</label>
+                        {/* <label>Airline (optional)</label>
                         <Input 
                             onChange={this.handleInputChange} 
                             value={this.state.airline} 
                             name="airline" 
                             placeholder="ex. Delta" 
-                        />
+                        /> */}
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Airline</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option value="allegiant">Allegiant</option>
+                                <option value="delta">Delta</option>
+                                <option value="jetblue">JetBlue</option>
+                                <option value="united">United</option>
+                                <option value="other" selected>Other</option>
+                            </select>
+                        </div>
                         <FormBtn 
                             disabled={!(this.state.origin.length === 3 && this.state.destination.length === 3)}
                             onClick={this.handleFormSubmit}
