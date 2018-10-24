@@ -23,7 +23,7 @@ module.exports = {
     const destination = "&destination=" + req.body.destination;
     let year;
     let make;
-    let model;
+    let carModel;
 
     // optomize this code
     if (req.body.year == "other") {
@@ -41,10 +41,10 @@ module.exports = {
     if (req.body.model == "other") {
       model = "";
     } else {
-      model = "&model=" + req.body.model;
+      model = "&model=" + req.body.carModel;
     };
 
-    axios.get("http://impact.brighterplanet.com/" + model + keyString + origin + destination + airline)
+    axios.get("http://impact.brighterplanet.com/" + model + keyString + origin + destination + year + make + carModel)
     .then(result => {
       // formulate object to send to db here
       var newTrip = {

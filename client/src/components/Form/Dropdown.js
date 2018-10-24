@@ -16,3 +16,12 @@ export const Dropdown = () => (
         </div>
     </div>
 );
+
+// export const Dropdown = props => (
+//     <div className="dropdown">
+//         <button className="dropbtn">{props.dropbtn}</button>
+//         <div className="dropdown-content">
+//             <Link to={props.link}>{props.children}</Link>
+//         </div>
+//     </div>
+// );

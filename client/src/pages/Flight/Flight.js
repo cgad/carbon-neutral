@@ -8,7 +8,6 @@ import { Table, TableHeader, TableRow, HeaderCell, DataCell, TableBody } from ".
 // import { runInThisContext } from "vm";
 
 class Flight extends Component {
-
     state = {
         origin: "",
         destination: "",
@@ -152,7 +151,7 @@ class Flight extends Component {
                             <Col size="md-2">
                             </Col>
                             <Col size="md-8">
-                                <h2>The flight greenhouse gas emission is the anthropogenic greenhouse gas emissions attributed to a single passenger on this flight. It includes CO2 emissions from combustion of non-biogenic fuel and extra forcing effects of high-altitude fuel combustion.</h2>
+                                <h2>The flight greenhouse gas emission is the anthropogenic greenhouse gas emissions attributed to a single passenger on this flight. It includes CO<sub>2</sub> emissions from combustion of non-biogenic fuel and extra forcing effects of high-altitude fuel combustion.</h2>
                             </Col>
                             <Col size="md-2">
                             </Col>
