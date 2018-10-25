@@ -52,17 +52,12 @@ class Flight extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
-        let airline = this.state.airline;
-        if (!(airline === "ALLEGIANT" || airline === "DELTA" || airline === "JETBLUE" || airline === "UNITED")) {
-            airline = "OTHER"
-        }
         
         if (this.state.origin.length === 3 && this.state.destination.length === 3) {
             API.saveFlight({
                 origin: this.state.origin,
                 destination: this.state.destination,
-                airline: airline
+                airline: this.state.airline
             })
                 .then(res => this.loadAllSearches())
                 .catch(err => console.log(err));
@@ -95,14 +90,14 @@ class Flight extends Component {
                             name="airline" 
                             placeholder="ex. Delta" 
                         /> */}
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleFormControlSelect1">Airline</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select className="form-control" id="exampleFormControlSelect1" onChange={this.handleInputChange} name="airline" value={this.state.airline}>
                                 <option value="allegiant">Allegiant</option>
                                 <option value="delta">Delta</option>
                                 <option value="jetblue">JetBlue</option>
                                 <option value="united">United</option>
-                                <option value="other" selected>Other</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
                         <FormBtn 
