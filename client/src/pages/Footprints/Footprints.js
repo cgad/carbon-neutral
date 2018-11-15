@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Dropdown } from "../../components/Form";
+import Nav from "../../components/Nav";
 
 class Footprints extends Component {
     state = {
@@ -12,6 +13,7 @@ class Footprints extends Component {
     render() {
         return (
             <main className="wrapper">
+                <Nav></Nav>
                 <section className="section parallax bg1">
                     {/* <a id="jump">Jump link destination</a> */}
                     <Container fluid id="intro">

@@ -5,6 +5,7 @@ import { List, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
 import { Col, Row, Container } from "../../components/Grid";
 import { Table, TableHeader, TableRow, HeaderCell, DataCell, TableBody } from "../../components/Table";
+import Nav from "../../components/Nav";
 // import { runInThisContext } from "vm";
 
 class Flight extends Component {
@@ -67,6 +68,7 @@ class Flight extends Component {
     render() {
         return (
             <main className="wrapper">
+                <Nav></Nav>
                 <section className="section parallax bg1">
                     <form>
                         <label>Origin Airport (required)</label>

@@ -5,6 +5,7 @@ import { List, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
 import { Col, Row, Container } from "../../components/Grid";
 import { Table, TableHeader, TableRow, HeaderCell, DataCell, TableBody } from "../../components/Table";
+import Nav from "../../components/Nav";
 // import { runInThisContext } from "vm";
 
 class Roadtrip extends Component {
@@ -64,6 +65,7 @@ class Roadtrip extends Component {
     render() {
         return (
             <main className="wrapper">
+                <Nav></Nav>
                 <section className="section parallax bg1">
                     <form>
                         <label>Origin (City, State) (required)</label>
@@ -107,7 +109,7 @@ class Roadtrip extends Component {
                             disabled={!(this.state.origin && this.state.destination)}
                             onClick={this.handleFormSubmit}
                         >
-                            Get Impact Model
+                            Coming Soon!
                         </FormBtn>
                      </form>
                      {/* <a href="#jump">Jump to Results</a> */}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Input, FormBtn } from "../../components/Form";
+import Nav from "../../components/Nav";
 
 class Pet extends Component {
     state = {
@@ -39,38 +40,41 @@ class Pet extends Component {
 
     render() {
         return (
-            <form>
-                <Input 
-                    onChange={this.handleInputChange} 
-                    value={this.state.species} 
-                    name="species" 
-                    placeholder="Species (ex. Dog). Required" 
-                />
-                <Input 
-                    onChange={this.handleInputChange} 
-                    value={this.state.breed} 
-                    name="breed" 
-                    placeholder="Breed (ex. Boxer). Required" 
-                />
-                <Input 
-                    onChange={this.handleInputChange} 
-                    value={this.state.gender} 
-                    name="gender" 
-                    placeholder="Gender (ex. Male). Optional" 
-                />
-                <Input 
-                    onChange={this.handleInputChange} 
-                    value={this.state.weight} 
-                    name="weight" 
-                    placeholder="Weight in kg (ex. Dog). Optional" 
-                />
-                <FormBtn
-                    disabled={!(this.state.species && this.state.breed)}
-                    onClick={this.handleFormSubmit}
-                >
-                    Coming Soon!
-                </FormBtn>
-            </form>
+            <main className="wrapper">
+                <Nav></Nav>
+                <form>
+                    <Input 
+                        onChange={this.handleInputChange} 
+                        value={this.state.species} 
+                        name="species" 
+                        placeholder="Species (ex. Dog). Required" 
+                    />
+                    <Input 
+                        onChange={this.handleInputChange} 
+                        value={this.state.breed} 
+                        name="breed" 
+                        placeholder="Breed (ex. Boxer). Required" 
+                    />
+                    <Input 
+                        onChange={this.handleInputChange} 
+                        value={this.state.gender} 
+                        name="gender" 
+                        placeholder="Gender (ex. Male). Optional" 
+                    />
+                    <Input 
+                        onChange={this.handleInputChange} 
+                        value={this.state.weight} 
+                        name="weight" 
+                        placeholder="Weight in kg (ex. Dog). Optional" 
+                    />
+                    <FormBtn
+                        disabled={!(this.state.species && this.state.breed)}
+                        onClick={this.handleFormSubmit}
+                    >
+                        Coming Soon!
+                    </FormBtn>
+                </form>
+            </main>
         )
     }
 }
