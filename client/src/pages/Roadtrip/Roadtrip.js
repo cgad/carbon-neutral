@@ -82,7 +82,7 @@ class Roadtrip extends Component {
                             name="destination" 
                             placeholder="ex. Syracuse, NY" 
                         />
-                        <p>Car Details</p>
+                        <p><strong>Car Details</strong> (optional)</p>
                         <label>Year</label>
                         <Input 
                             onChange={this.handleInputChange} 
@@ -153,8 +153,7 @@ class Roadtrip extends Component {
                                 </Col>
                             </Row>
                         </Container>
-                    ) : (<h3>No Results to Display</h3>)}
-                    
+                    ) : (<h3>No Results to Display</h3>)} 
                 </section>
                  <section className="section parallax bg2">
                     <Container fluid>
@@ -162,7 +161,7 @@ class Roadtrip extends Component {
                             <Col size="md-2">
                             </Col>
                             <Col size="md-8">
-                                <h2>Roadtrip scope</h2>
+                                {/* <h2>Roadtrip scope</h2> */}
                             </Col>
                             <Col size="md-2">
                             </Col>

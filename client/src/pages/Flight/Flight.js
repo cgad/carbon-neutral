@@ -42,6 +42,7 @@ class Flight extends Component {
                 await this.setState({ current: res.data });
                 this.loadAllSearches();
             })
+            .then(console.log(this.current.results))
             .catch(err => console.log(err));
     };
 
@@ -83,7 +84,7 @@ class Flight extends Component {
                             onChange={this.handleInputChange} 
                             value={this.state.destination} 
                             name="destination" 
-                            placeholder="ex. FLL" 
+                            placeholder="ex. SYR" 
                         />
                         {/* <label>Airline (optional)</label>
                         <Input 

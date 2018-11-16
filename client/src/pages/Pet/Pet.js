@@ -42,38 +42,45 @@ class Pet extends Component {
         return (
             <main className="wrapper">
                 <Nav></Nav>
-                <form>
-                    <Input 
-                        onChange={this.handleInputChange} 
-                        value={this.state.species} 
-                        name="species" 
-                        placeholder="Species (ex. Dog). Required" 
-                    />
-                    <Input 
-                        onChange={this.handleInputChange} 
-                        value={this.state.breed} 
-                        name="breed" 
-                        placeholder="Breed (ex. Boxer). Required" 
-                    />
-                    <Input 
-                        onChange={this.handleInputChange} 
-                        value={this.state.gender} 
-                        name="gender" 
-                        placeholder="Gender (ex. Male). Optional" 
-                    />
-                    <Input 
-                        onChange={this.handleInputChange} 
-                        value={this.state.weight} 
-                        name="weight" 
-                        placeholder="Weight in kg (ex. Dog). Optional" 
-                    />
-                    <FormBtn
-                        disabled={!(this.state.species && this.state.breed)}
-                        onClick={this.handleFormSubmit}
-                    >
-                        Coming Soon!
-                    </FormBtn>
-                </form>
+                <section className="section parallax bg1">
+                    <form>
+                        <label>Species (required)</label>
+                        <Input 
+                            onChange={this.handleInputChange} 
+                            value={this.state.species} 
+                            name="species" 
+                            placeholder="ex. Dog. Required" 
+                        />
+                        <label>Breed (required)</label>
+                        <Input 
+                            onChange={this.handleInputChange} 
+                            value={this.state.breed} 
+                            name="breed" 
+                            placeholder="ex. Boxer. Required" 
+                        />
+                        <label>Gender (optional)</label>
+                        <Input 
+                            onChange={this.handleInputChange} 
+                            value={this.state.gender} 
+                            name="gender" 
+                            placeholder="ex. Male. Optional" 
+                        />
+                        <label>Weight (kg) (optional)</label>
+                        <Input 
+                            onChange={this.handleInputChange} 
+                            value={this.state.weight} 
+                            name="weight" 
+                            placeholder="ex. 27. Optional" 
+                        />
+                        <FormBtn
+                            // disabled when no species and breed
+                            disabled={!(this.state.species && this.state.breed)}
+                            onClick={this.handleFormSubmit}
+                        >
+                            Coming Soon!
+                        </FormBtn>
+                    </form>
+                </section>
             </main>
         )
     }

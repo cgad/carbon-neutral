@@ -22,3 +22,7 @@
 .dropdown-content {
   text-shadow: none;
 }
+
+#modelBtn {
+  font-size: 20px;
+}
