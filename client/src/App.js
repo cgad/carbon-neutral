@@ -5,6 +5,7 @@ import Roadtrip from "./pages/Roadtrip/Roadtrip";
 import Flight from "./pages/Flight/Flight";
 import Pet from "./pages/Pet/Pet";
 import NoMatch from "./pages/NoMatch/NoMatch";
+import Masonry from "./pages/masonry.js";
 
 const App = () => (
   <Router>
@@ -15,6 +16,7 @@ const App = () => (
         <Route exact path="/roadtrip" component={Roadtrip} />
         <Route exact path="/flight" component={Flight} />
         <Route exact path="/pet" component={Pet} />
+        <Route exact path="/masonry" component={Masonry} />
         <Route component={NoMatch} />
       </Switch>
     </div>

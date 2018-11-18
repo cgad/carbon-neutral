@@ -1,0 +1,56 @@
+/* Box-sizing reset: https://w3bits.com/?p=3225 */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Masonry container */
+.masonry { 
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+/* Masonry brick */
+.masonry-brick {
+  flex: auto;
+  height: 150px;
+  min-width: 150px;
+  margin: 16px; /* Some gutter */
+  /* --Goal-- margin total 16px between boxes */
+  background: white;
+  padding: 16px;
+}
+
+/* Select element based on source order */
+.masonry-brick:nth-child(4n+1) {
+  width: 250px;
+}
+
+.masonry-brick:nth-child(4n+2) {
+  width: 325px;
+}
+
+.masonry-brick:nth-child(4n+3) {
+  width: 180px;
+}
+
+.masonry-brick:nth-child(4n+4) {
+  width: 380px;
+}
+
+/* Masonry on small-sized screens */
+
+/* --Goal-- 1 column, no left or right margin */
+
+/* @media screen and (max-width: 600px){
+  .masonry-brick {
+    column-count: 1;
+    margin: 16px 0 16px 0;
+  }
+} */
