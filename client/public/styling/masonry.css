@@ -19,12 +19,14 @@ html {
 /* Masonry brick */
 .masonry-brick {
   flex: auto;
-  height: 150px;
+  height: 100px;
   min-width: 150px;
   margin: 16px; /* Some gutter */
   /* --Goal-- margin total 16px between boxes */
   background: white;
   padding: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Select element based on source order */
@@ -45,12 +47,107 @@ html {
 }
 
 /* Masonry on small-sized screens */
-
 /* --Goal-- 1 column, no left or right margin */
-
 /* @media screen and (max-width: 600px){
   .masonry-brick {
     column-count: 1;
     margin: 16px 0 16px 0;
   }
 } */
+
+/* SIBLING FADE: fade out siblings around a hovered item */
+
+.sibling-fade { visibility: hidden; }
+/* Prevents :hover from triggering in the gaps between items */
+
+.sibling-fade > * { visibility: visible; }
+/* Brings the child items back in, even though the parent is `hidden` */
+
+.sibling-fade > * { transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms; }
+/* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
+
+.sibling-fade:hover > * { opacity: 0.4; transform: scale(0.9); }
+/* Fade out all items when the parent is hovered */
+
+.sibling-fade > *:hover { opacity: 1; transform: scale(1); transition-delay: 0ms, 0ms; }
+/* Fade in the currently hovered item */
+
+/* Presentational Styles */
+/* html { display: flex; height: 100%; }
+body { 
+  background: #f05555;
+  padding: 10px;
+  max-width: 40em;
+  margin: auto;
+} */
+
+.sibling-fade {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sibling-fade > * {
+  background: white;
+  padding: 1em;
+  flex: auto;
+  margin: 0.3em;
+  text-align: center;
+  color: #f05555;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+/**/
+
+/* --Goal-- on hover of about, show text of about instead of "About" */
+.about {
+  background: blue;
+}
+.about:hover {
+  background: yellow;
+}
+
+/* overlay test */
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+}
