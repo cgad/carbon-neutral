@@ -184,3 +184,8 @@ tbody {
     opacity: 1;
   }
 }
+
+/* current results- class on ListItem component */
+.list-group-item:hover {
+  font-size: 24px;
+}

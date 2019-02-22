@@ -87,11 +87,15 @@ class Flight extends Component {
     }
   };
 
+  onViewClick = event => {
+
+  }
+
   render() {
     return (
       <main className="wrapper">
         <Nav />
-        <section className="section parallax bg1">
+        <section className="section parallax bg1" id="jump">
           <form>
             <label>Origin Airport (required)</label>
             <Input
@@ -177,7 +181,7 @@ class Flight extends Component {
                   </h4>
                   <br />
                   <List key={this.state.current._id} className="results">
-                    <ListItem className="resultItem">
+                    <ListItem>
                       <strong>
                         {Math.trunc(
                           this.state.current.cars_off_road_for_day
@@ -240,7 +244,7 @@ class Flight extends Component {
         <section className="section static results">
           {this.state.results.length ? (
             <Container fluid>
-              <h4 class="search">Search History</h4>
+              <h4 className="search">Search History</h4>
               <Row>
                 <Col size="md-2" />
                 <Col size="md-8">
@@ -261,20 +265,23 @@ class Flight extends Component {
                               title="Click to delete search record"
                               onClick={() => this.deleteSearch(result._id)}
                             />
-                            <img
-                              className="viewIcon"
-                              data-toggle="tooltip"
-                              data-placement="bottom"
-                              title="Click to view search results"
-                              src="/images/eye.png"
-                              alt="Eye icon"
-                              onClick={() => this.viewSearch(result._id)}
-                            />
+                            {/* View icon: jump to search form with fields filled in with these parameters */}
+                            <a href="#jump">
+                              <img
+                                className="viewIcon"
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title="Click to jump to search form with these parameters."
+                                src="/images/eye.png"
+                                alt="Eye icon"
+                                onClick={() => this.setState({origin: result.origin, destination:result.destination})}
+                              />
+                            </a>
                             <img
                               className="favIcon"
                               data-toggle="tooltip"
                               data-placement="right"
-                              title="Click to save search in favorites"
+                              title="COMING SOON! Click to save in favorites"
                               src="/images/heart.png"
                               alt="Heart icon"
                             />
