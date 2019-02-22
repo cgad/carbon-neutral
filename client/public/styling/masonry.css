@@ -10,7 +10,7 @@ html {
 }
 
 /* Masonry container */
-.masonry { 
+.masonry {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -30,19 +30,19 @@ html {
 }
 
 /* Select element based on source order */
-.masonry-brick:nth-child(4n+1) {
+.masonry-brick:nth-child(4n + 1) {
   width: 250px;
 }
 
-.masonry-brick:nth-child(4n+2) {
+.masonry-brick:nth-child(4n + 2) {
   width: 325px;
 }
 
-.masonry-brick:nth-child(4n+3) {
+.masonry-brick:nth-child(4n + 3) {
   width: 180px;
 }
 
-.masonry-brick:nth-child(4n+4) {
+.masonry-brick:nth-child(4n + 4) {
   width: 380px;
 }
 
@@ -57,19 +57,32 @@ html {
 
 /* SIBLING FADE: fade out siblings around a hovered item */
 
-.sibling-fade { visibility: hidden; }
+.sibling-fade {
+  visibility: hidden;
+}
 /* Prevents :hover from triggering in the gaps between items */
 
-.sibling-fade > * { visibility: visible; }
+.sibling-fade > * {
+  visibility: visible;
+}
 /* Brings the child items back in, even though the parent is `hidden` */
 
-.sibling-fade > * { transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms; }
+.sibling-fade > * {
+  transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+}
 /* Makes the fades smooth with a slight delay to prevent jumps as the mouse moves between items */
 
-.sibling-fade:hover > * { opacity: 0.4; transform: scale(0.9); }
+.sibling-fade:hover > * {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
 /* Fade out all items when the parent is hovered */
 
-.sibling-fade > *:hover { opacity: 1; transform: scale(1); transition-delay: 0ms, 0ms; }
+.sibling-fade > *:hover {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0ms, 0ms;
+}
 /* Fade in the currently hovered item */
 
 /* Presentational Styles */
@@ -128,8 +141,8 @@ body {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
+  transition: 0.5s ease;
+  background-color: #008cba;
   /* overflow: hidden;
   text-overflow: ellipsis; */
 }

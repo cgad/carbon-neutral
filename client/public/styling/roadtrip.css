@@ -45,14 +45,14 @@
 
 /* The styling for the static div. */
 .static {
-background: #191b1a;
+  background: #191b1a;
 }
 
 /* Sets the actual background images to adorable kitties. This part is crucial. */
 .bg1::after {
-background-image: url("../images/runway.jpg");
+  background-image: url("../images/runway.jpg");
 }
 
 .bg2::after {
-background-image: url("../images/runway.jpg");
+  background-image: url("../images/runway.jpg");
 }

@@ -15,9 +15,23 @@ router.post("/calculate", (req, res) => {
   let origin = req.body.origin; // user input
   let destination = req.body.destination; // user input
 
-  axios.get("http://impact.brighterplanet.com/" + model + "?key=" + apiKey + "&origin_airport=" + origin + "&destination_airport=" + destination)
-  .then(response => { console.log(response)})
-  .catch(error => { console.log(error)});
+  axios
+    .get(
+      "http://impact.brighterplanet.com/" +
+        model +
+        "?key=" +
+        apiKey +
+        "&origin_airport=" +
+        origin +
+        "&destination_airport=" +
+        destination
+    )
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 
   res.end();
 });

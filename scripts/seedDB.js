@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/reactsearchlist"
+  process.env.MONGODB_URI || "mongodb://localhost/reactsearchlist"
 );

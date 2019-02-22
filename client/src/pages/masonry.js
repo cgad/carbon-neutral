@@ -11,16 +11,18 @@ class Masonry extends Component {
   render() {
     return (
       <div>
-        <Nav></Nav>
+        <Nav />
         <div className="masonry sibling-fade">
           <div className="masonry-brick">
             blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
           </div>
           <div className="masonry-brick container">
-          {/* change this to opposite- show text, then show image on hover */}
-            <img src="images/runway.jpg" className="runway" alt="eye"></img>
+            {/* change this to opposite- show text, then show image on hover */}
+            <img src="images/runway.jpg" className="runway" alt="eye" />
             <div className="overlay">
-              <div className="text">blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah</div>
+              <div className="text">
+                blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+              </div>
             </div>
           </div>
           <div className="masonry-brick about">
@@ -37,7 +39,7 @@ class Masonry extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -6,7 +6,8 @@ const router = require("express").Router();
 const footprintsController = require("../../controllers/footprintsController");
 
 // Matches with "/api/searched"
-router.route("/")
+router
+  .route("/")
   .get(footprintsController.allSearches)
   .post(footprintsController.create);
 
@@ -26,10 +27,24 @@ router.post("/calculate", (req, res) => {
   let origin = "FLL"; // user input
   let destination = "DEN"; // user input
 
-  axios.get("http://impact.brighterplanet.com/" + model + "?key=" + apiKey + "&origin_airport=" + origin + "&destination_airport=" + destination)
-  // null don't filter anything, indent 2
-  .then(response => { console.log(response)})
-  .catch(error => { console.log(error)});
+  axios
+    .get(
+      "http://impact.brighterplanet.com/" +
+        model +
+        "?key=" +
+        apiKey +
+        "&origin_airport=" +
+        origin +
+        "&destination_airport=" +
+        destination
+    )
+    // null don't filter anything, indent 2
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 
   res.end();
 });
