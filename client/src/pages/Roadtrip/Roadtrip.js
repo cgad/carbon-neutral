@@ -99,24 +99,21 @@ class Roadtrip extends Component {
               name="destination"
               placeholder="ex. Syracuse, NY"
             />
-            <p>
-              <strong>Car Details</strong> (optional)
-            </p>
-            <label>Year</label>
+            <label>Year of Car (optional)</label>
             <Input
               onChange={this.handleInputChange}
               value={this.state.year}
               name="year"
               placeholder="ex. 2011"
             />
-            <label>Make</label>
+            <label>Make of Car (optional)</label>
             <Input
               onChange={this.handleInputChange}
               value={this.state.make}
               name="make"
               placeholder="ex. Honda"
             />
-            <label>Model</label>
+            <label>Model of Car (optional)</label>
             <Input
               onChange={this.handleInputChange}
               value={this.state.model}
