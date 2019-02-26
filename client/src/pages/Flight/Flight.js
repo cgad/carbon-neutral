@@ -87,10 +87,6 @@ class Flight extends Component {
     }
   };
 
-  onViewClick = event => {
-
-  }
-
   render() {
     return (
       <main className="wrapper">
@@ -274,7 +270,12 @@ class Flight extends Component {
                                 title="Click to jump to search form with these parameters."
                                 src="/images/eye.png"
                                 alt="Eye icon"
-                                onClick={() => this.setState({origin: result.origin, destination:result.destination})}
+                                onClick={() =>
+                                  this.setState({
+                                    origin: result.origin,
+                                    destination: result.destination
+                                  })
+                                }
                               />
                             </a>
                             <img
