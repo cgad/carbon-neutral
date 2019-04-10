@@ -107,35 +107,6 @@ class Flight extends Component {
               name="destination"
               placeholder="ex. SYR"
             />
-            {/* <label>Airline (optional)</label> */}
-            {/* Info button popup */}
-            {/* <i
-              className="fa fa-info-circle popup"
-              onClick={this.popUp}
-              aria-hidden="true"
-            >
-              <span className="popuptext" id="myPopup">
-                Supported airlines: Allegiant, Delta, JetBlue, United
-              </span>
-            </i> */}
-            {/* Why is this still acting like a dropdown on click? Something with the name being 'airline' */}
-            {/* <Input
-              onChange={this.handleInputChange}
-              value={this.state.airline}
-              name="airline"
-              placeholder="ex. Delta"
-            /> */}
-            {/* DROPDOWN FORM -- buggy. State changes but form choice does not */}
-            {/* <div className="form-group">
-                            <label for="exampleFormControlSelect1">Airline</label>
-                            <select className="form-control" id="exampleFormControlSelect1" onChange={this.handleInputChange} name="airline" value={this.state.airline}>
-                                <option value="allegiant">Allegiant</option>
-                                <option value="delta">Delta</option>
-                                <option value="jetblue">JetBlue</option>
-                                <option value="united">United</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div> */}
             <FormBtn
               disabled={
                 !(
@@ -161,8 +132,6 @@ class Flight extends Component {
                     Origin: <strong>{this.state.current.origin}</strong> |
                     Destination:{" "}
                     <strong>{this.state.current.destination}</strong>
-                    {/* | Airline:{" "} */}
-                    {/* <strong>{this.state.current.airline}</strong> */}
                   </h6>
                 </Col>
                 <Col size="md-2" />
@@ -278,18 +247,17 @@ class Flight extends Component {
                                 }
                               />
                             </a>
-                            <img
+                            {/* <img
                               className="favIcon"
                               data-toggle="tooltip"
                               data-placement="right"
                               title="COMING SOON! Click to save in favorites"
                               src="/images/heart.png"
                               alt="Heart icon"
-                            />
+                            /> */}
                           </DataCell>
                           <DataCell>{result.origin}</DataCell>
                           <DataCell>{result.destination}</DataCell>
-                          {/* <DataCell>{result.airline}</DataCell> */}
                         </TableRow>
                       ))}
                     </TableBody>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { Dropdown } from "../../components/Form";
 import Nav from "../../components/Nav";
@@ -61,13 +60,6 @@ class Footprints extends Component {
         <section className="section parallax bg1">
           <form>
             <Dropdown value={this.state.model} name="model" />
-            {/* <Dropdown
-                            value={this.state.model} 
-                            name="model" 
-                            dropbtn="Impact Model"
-                            link="/roadtrip" 
-                            children="Road Trip"
-                        /> */}
           </form>
           {/* <a href="#jump">Jump to Results</a> */}
         </section>
